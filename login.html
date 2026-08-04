@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Deficit | Login</title>
+
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="background-glow"></div>
+
+    <main class="login-container">
+      <img src="images/logo.png" alt="Deficit Logo" class="logo" />
+
+      <h1>Welcome Back</h1>
+
+      <p class="subtitle">
+        Track your progress.<br />
+        Build consistency.
+      </p>
+
+      <form id="login-form">
+        <div class="input-group">
+          <label>Email</label>
+
+          <input type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+
+          <input type="password" placeholder="••••••••" required />
+        </div>
+
+        <div class="login-options">
+          <label class="remember-me">
+            <input type="checkbox" id="remember-me" />
+
+            <span class="checkmark"></span>
+
+            Remember Me
+          </label>
+
+          <a href="#" class="forgot-password"> Forgot Password? </a>
+        </div>
+
+        <button class="login-btn">Log In</button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <a href="#" class="create-account"> Create an Account </a>
+    </main>
+  </body>
+</html>
