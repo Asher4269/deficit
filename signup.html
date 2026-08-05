@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Deficit | Create Account</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/login.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="background-glow"></div>
+
+    <main class="login-container">
+      <img src="images/logo.png" class="logo" alt="Deficit Logo" />
+
+      <h1>Create Account</h1>
+
+      <p class="subtitle">Start building consistency today.</p>
+
+      <form id="signup-form">
+        <div class="input-group">
+          <label>Email</label>
+
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Choose a password"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Confirm Password</label>
+
+          <input
+            id="confirm-password"
+            type="password"
+            placeholder="Confirm password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="login-btn">Create Account</button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <a href="index.html" class="create-account">
+        Already have an account? Log In
+      </a>
+    </main>
+
+    <script src="js/signup.js"></script>
+  </body>
+</html>

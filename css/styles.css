@@ -389,6 +389,112 @@ input:focus {
 }
 
 /*====================================================
+    PROFILE PAGE
+=====================================================*/
+
+.page {
+  width: min(420px, 100%);
+
+  margin: auto;
+
+  padding-bottom: 110px;
+}
+
+.hero {
+  margin-bottom: 36px;
+}
+
+.greeting {
+  color: var(--text-secondary);
+
+  margin-bottom: 6px;
+}
+
+.stat-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: 22px;
+
+  margin-bottom: 18px;
+}
+
+.stat-card h2 {
+  font-size: 1rem;
+
+  color: var(--text-secondary);
+
+  margin-bottom: 12px;
+}
+
+.stat-number {
+  font-size: 2rem;
+
+  font-weight: 700;
+}
+
+/*====================================================
+    BOTTOM NAVIGATION
+=====================================================*/
+
+.bottom-nav {
+  position: fixed;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 100%;
+
+  height: 76px;
+
+  background: rgba(10, 10, 10, 0.96);
+
+  border-top: 1px solid var(--border);
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  backdrop-filter: blur(20px);
+}
+
+.bottom-nav a {
+  text-decoration: none;
+
+  font-size: 1.7rem;
+
+  color: var(--text-secondary);
+
+  transition: 0.2s;
+}
+
+.bottom-nav a:hover {
+  color: white;
+}
+
+.bottom-nav .active {
+  color: var(--accent);
+}
+
+/*====================================================
+    SIGN UP PAGE
+=====================================================*/
+
+#signup-form {
+  width: 100%;
+}
+
+#signup-form .login-btn {
+  margin-top: 12px;
+}
+
+/*====================================================
     MOBILE
 =====================================================*/
 
