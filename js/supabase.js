@@ -13,6 +13,3 @@ const SUPABASE_PUBLISHABLE_KEY =
 
 // Initialize Supabase
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-
-// Make sure the connection initialized
-console.log("✅ Supabase initialized.");

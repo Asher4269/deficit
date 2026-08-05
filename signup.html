@@ -7,14 +7,10 @@
 
     <title>Deficit | Create Account</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="js/supabase.js"></script>
-
-    <script src="js/login.js"></script>
-
+    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css" />
 
+    <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -25,47 +21,58 @@
     <div class="background-glow"></div>
 
     <main class="login-container">
-      <img src="images/logo.png" class="logo" alt="Deficit Logo" />
+      <img src="images/logo.png" alt="Deficit Logo" class="logo" />
 
       <h1>Create Account</h1>
 
       <p class="subtitle">Start building consistency today.</p>
 
       <form id="signup-form">
+        <!-- Email -->
+
         <div class="input-group">
-          <label>Email</label>
+          <label for="email"> Email </label>
 
           <input
             id="email"
             type="email"
             placeholder="you@example.com"
+            autocomplete="email"
             required
           />
         </div>
 
+        <!-- Password -->
+
         <div class="input-group">
-          <label>Password</label>
+          <label for="password"> Password </label>
 
           <input
             id="password"
             type="password"
-            placeholder="Choose a password"
+            placeholder="Create a password"
+            autocomplete="new-password"
+            minlength="8"
             required
           />
         </div>
 
+        <!-- Confirm Password -->
+
         <div class="input-group">
-          <label>Confirm Password</label>
+          <label for="confirm-password"> Confirm Password </label>
 
           <input
             id="confirm-password"
             type="password"
-            placeholder="Confirm password"
+            placeholder="Re-enter your password"
+            autocomplete="new-password"
+            minlength="8"
             required
           />
         </div>
 
-        <button type="submit" class="login-btn">Create Account</button>
+        <button class="login-btn" type="submit">Create Account</button>
       </form>
 
       <div class="divider">
@@ -76,6 +83,14 @@
         Already have an account? Log In
       </a>
     </main>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Project Scripts -->
+    <script src="js/supabase.js"></script>
+
+    <script src="js/auth.js"></script>
 
     <script src="js/signup.js"></script>
   </body>
