@@ -588,6 +588,106 @@ input:focus {
   color: var(--accent);
 }
 
+/* ------------------------------ */
+/* Onboarding */
+/* ------------------------------ */
+
+.onboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.onboard-card {
+  width: 100%;
+  max-width: 420px;
+
+  background: #111;
+
+  border: 1px solid #2c2c2c;
+
+  border-radius: 18px;
+
+  padding: 40px;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+.onboard-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.onboard-subtitle {
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.onboard-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.onboard-card label {
+  font-weight: 600;
+}
+
+.onboard-card input {
+  background: #1d1d1d;
+
+  color: white;
+
+  border: 1px solid #444;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+.onboard-card input:focus {
+  outline: none;
+
+  border-color: #39ff14;
+
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
+}
+
+.onboard-card button {
+  margin-top: 12px;
+
+  background: #39ff14;
+
+  color: black;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.onboard-card button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(57, 255, 20, 0.3);
+}
+
 /*====================================================
     MOBILE
 =====================================================*/
