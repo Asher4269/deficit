@@ -13,20 +13,13 @@ Pages that use this file:
 - workouts.html
 - calories.html
 
-A profile row is always created complete at signup
-(display_name + initial_weight are set immediately),
-so there is no "logged in but not onboarded" state to
-route around anymore.
+A profile row is always created (by the DB trigger) the
+moment a user signs up, but display_name starts as NULL.
+The user fills it in later from profile.html. A null
+display_name is a normal, expected state — not an error.
 
 ====================================================
     Redirect Loop Guard
-====================================================
-
-If index.html <-> profile.html (or similar) ever start
-bouncing off each other again, this stops it after a
-couple of hops instead of spinning forever, and tells
-you clearly in the console + on screen.
-
 ====================================================
 */
 
@@ -47,7 +40,6 @@ function guardedRedirect(destination) {
     guard = { count: 0, firstAt: now };
   }
 
-  // Reset the counter if the last redirect was a while ago
   if (now - guard.firstAt > REDIRECT_GUARD_WINDOW_MS) {
     guard = { count: 0, firstAt: now };
   }
@@ -91,49 +83,6 @@ async function getSession() {
 
 /*
 ====================================================
-    Get Current Profile
-====================================================
-
-Returns the user's profile row. Assumes a session
-already exists — call getSession()/requireAuth() first.
-
-====================================================
-*/
-
-async function getCurrentProfile() {
-  const {
-    data: { user },
-    error: userError,
-  } = await db.auth.getUser();
-
-  if (userError || !user) {
-    console.error("getCurrentProfile: no user", userError);
-    return null;
-  }
-
-  const { data, error } = await db
-    .from("profiles")
-    .select("*")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (error) {
-    console.error("getCurrentProfile: query error", error);
-    return null;
-  }
-
-  if (!data) {
-    console.error(
-      "getCurrentProfile: session exists but no matching profiles row for this user id. Check that signup wrote the row and that RLS SELECT policy allows it.",
-    );
-    return null;
-  }
-
-  return data;
-}
-
-/*
-====================================================
     Get Current User
 ====================================================
 */
@@ -151,13 +100,47 @@ async function getCurrentUser() {
 
 /*
 ====================================================
+    Get Current Profile
+====================================================
+
+Returns the user's profile row. display_name may be
+NULL — that's expected, not a failure.
+
+====================================================
+*/
+
+async function getCurrentProfile() {
+  const user = await getCurrentUser();
+
+  if (!user) return null;
+
+  const { data, error } = await db
+    .from("profiles")
+    .select("*")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("getCurrentProfile: query error", error);
+    return null;
+  }
+
+  if (!data) {
+    console.error(
+      "getCurrentProfile: session exists but no matching profiles row. Check the on_auth_user_created trigger and RLS SELECT policy.",
+    );
+    return null;
+  }
+
+  return data;
+}
+
+/*
+====================================================
     Redirect Logged-In Users
 ====================================================
 
 Used on: index.html, signup.html
-
-If the user already has a valid session, send them to
-profile.html.
 
 ====================================================
 */
@@ -178,12 +161,11 @@ async function redirectIfLoggedIn() {
 Used on: profile.html, dashboard.html, weight.html,
 workouts.html, calories.html
 
-If there's no session, send back to index.html.
-If there's a session but somehow no profile row,
-also send back to index.html (this should not happen
-under normal use since signup always creates the row).
+Only checks that a session AND a profiles row exist —
+does NOT require display_name to be set, since that's
+now optional and filled in from within profile.html.
 
-Returns the user's profile, or null if it redirected.
+Returns the user's profile.
 
 ====================================================
 */

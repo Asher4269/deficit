@@ -25,6 +25,32 @@
         <h1 id="user-email">Loading...</h1>
       </section>
 
+      <!-- Shown only when the user hasn't set a display name yet -->
+      <section class="stat-card" id="name-prompt" style="display: none">
+        <div class="card-header">
+          <span>👋 What should we call you?</span>
+        </div>
+
+        <form id="name-form" style="display: flex; gap: 10px">
+          <input
+            id="name-input"
+            type="text"
+            maxlength="40"
+            placeholder="John"
+            required
+            style="flex: 1"
+          />
+
+          <button
+            class="login-btn"
+            type="submit"
+            style="width: auto; padding: 16px 22px"
+          >
+            Save
+          </button>
+        </form>
+      </section>
+
       <section class="stat-card">
         <div class="card-header">
           <span>🔥 Streak</span>
@@ -38,7 +64,7 @@
           <span>⚖ Current Weight</span>
         </div>
 
-        <p class="stat-number" id="current-weight">---</p>
+        <p class="stat-number">---</p>
       </section>
 
       <section class="stat-card">
