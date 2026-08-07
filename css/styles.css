@@ -389,7 +389,7 @@ input:focus {
 }
 
 /*====================================================
-    PROFILE PAGE
+    APP PAGES (profile / weight / workouts / calories / settings)
 =====================================================*/
 
 .page {
@@ -408,6 +408,14 @@ input:focus {
   color: var(--text-secondary);
 
   margin-bottom: 6px;
+}
+
+.card-header {
+  color: var(--text-secondary);
+
+  font-size: 0.95rem;
+
+  margin-bottom: 14px;
 }
 
 .stat-card {
@@ -479,13 +487,21 @@ input:focus {
 .bottom-nav a svg {
   width: 28px;
   height: 28px;
-  fill: currentColor;
   display: block;
   transition: 0.2s ease;
 }
 
-.bottom-nav a svg path[fill]:not([fill="none"]) {
+/* Force every icon path to follow the link's color, regardless of
+   whether the SVG file itself has a fill attribute or not — this is
+   what was missing before, causing icons to default to black. */
+.bottom-nav a svg path {
   fill: currentColor;
+}
+
+/* ...except the invisible bounding-box rectangle some icon exports
+   include, which must stay non-rendering. */
+.bottom-nav a svg path[fill="none"] {
+  fill: none;
 }
 
 .bottom-nav a:hover {
@@ -511,200 +527,6 @@ input:focus {
 
 #signup-form .login-btn {
   margin-top: 12px;
-}
-
-/*====================================================
-    HOME PAGE
-=====================================================*/
-
-.page {
-  width: min(420px, 100%);
-
-  margin: auto;
-
-  padding-bottom: 110px;
-}
-
-.hero {
-  margin-bottom: 36px;
-}
-
-.greeting {
-  color: var(--text-secondary);
-
-  margin-bottom: 6px;
-}
-
-.card-header {
-  color: var(--text-secondary);
-
-  font-size: 0.95rem;
-
-  margin-bottom: 14px;
-}
-
-.stat-card {
-  background: var(--surface);
-
-  border: 1px solid var(--border);
-
-  border-radius: 22px;
-
-  padding: 22px;
-
-  margin-bottom: 18px;
-}
-
-.stat-number {
-  font-size: 2rem;
-
-  font-weight: 700;
-}
-
-/*====================================================
-    BOTTOM NAVIGATION
-=====================================================*/
-
-.bottom-nav {
-  position: fixed;
-
-  bottom: 0;
-
-  left: 0;
-
-  width: 100%;
-
-  height: 74px;
-
-  background: rgba(18, 18, 18, 0.95);
-
-  border-top: 1px solid var(--border);
-
-  display: flex;
-
-  justify-content: space-around;
-
-  align-items: center;
-
-  backdrop-filter: blur(20px);
-}
-
-.bottom-nav a {
-  color: var(--text-secondary);
-
-  text-decoration: none;
-
-  font-size: 1.6rem;
-
-  transition: 0.2s;
-}
-
-.bottom-nav a:hover {
-  color: white;
-}
-
-.bottom-nav a.active {
-  color: var(--accent);
-}
-
-/* ------------------------------ */
-/* Onboarding */
-/* ------------------------------ */
-
-.onboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 24px;
-}
-
-.onboard-card {
-  width: 100%;
-  max-width: 420px;
-
-  background: #111;
-
-  border: 1px solid #2c2c2c;
-
-  border-radius: 18px;
-
-  padding: 40px;
-
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
-}
-
-.onboard-card h1 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.onboard-subtitle {
-  color: #aaa;
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.onboard-card form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.onboard-card label {
-  font-weight: 600;
-}
-
-.onboard-card input {
-  background: #1d1d1d;
-
-  color: white;
-
-  border: 1px solid #444;
-
-  border-radius: 10px;
-
-  padding: 14px;
-
-  font-size: 16px;
-
-  transition: 0.2s;
-}
-
-.onboard-card input:focus {
-  outline: none;
-
-  border-color: #39ff14;
-
-  box-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
-}
-
-.onboard-card button {
-  margin-top: 12px;
-
-  background: #39ff14;
-
-  color: black;
-
-  border: none;
-
-  border-radius: 10px;
-
-  padding: 14px;
-
-  font-size: 16px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.onboard-card button:hover {
-  transform: translateY(-2px);
-
-  box-shadow: 0 8px 20px rgba(57, 255, 20, 0.3);
 }
 
 /*====================================================
