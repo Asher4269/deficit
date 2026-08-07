@@ -12,11 +12,36 @@ async function initializeProfile() {
   if (!profile) return;
 
   renderProfile(profile);
+  loadCurrentWeight(profile);
 
   const nameForm = document.getElementById("name-form");
   nameForm.addEventListener("submit", (event) =>
     saveDisplayName(event, profile),
   );
+}
+
+async function loadCurrentWeight(profile) {
+  const weightEl = document.getElementById("current-weight");
+
+  const { data, error } = await db
+    .from("weight_logs")
+    .select("weight, logged_at")
+    .eq("user_id", profile.id)
+    .order("logged_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error("loadCurrentWeight error:", error);
+    return;
+  }
+
+  if (!data) {
+    // No entries yet — leave the "---" placeholder in place
+    return;
+  }
+
+  weightEl.textContent = `${data.weight} lbs`;
 }
 
 function renderProfile(profile) {
